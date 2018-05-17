@@ -26,10 +26,9 @@ def caesar_shift(enc_input, shift, alphabet):
     Output: shifted text
     """
     # convert enciphered input to lowercase
-    enc_input.lower()
     shifted_text = ''
 
-    for word in enc_input:
+    for word in enc_input.lower():
         if word in alphabet:
             shifted_text += alphabet[(alphabet.index(word) + shift) % 26]
         else:
@@ -38,7 +37,7 @@ def caesar_shift(enc_input, shift, alphabet):
     return shifted_text
 
 # create dictionary and set alphabet
-eng_dict = create_dictionary('english_dictionary.txt')
+eng_dict = create_dictionary('english-dictionary.txt')
 alphabet = "abcdefghijklmnopqrstuvwxyz"
 
 # get enciphered input
@@ -64,5 +63,5 @@ for i in range(0,len(alphabet)):
 
 shifted_text['Word Percentage'] = shifted_text['Total Real Words'] / shifted_text['Total Words']
 
-print(shifted_text.iloc[shifted_text['Word Percentage'].idxmax()])
+print(shifted_text.iloc[shifted_text['Total Real Words'].idxmax()])
 print(shifted_text)
